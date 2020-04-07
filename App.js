@@ -9,4 +9,4 @@ import { Login, Dashboard } from './src/views';
 //   </Container>
 // );
 
-export default Dashboard;
+export default Login;
