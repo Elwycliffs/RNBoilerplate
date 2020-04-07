@@ -1,22 +1,24 @@
 import React from 'react';
-import { StyleSheet, Image, View } from 'react-native';
-import { Container, Form } from 'native-base';
+import { StyleSheet, Image, View, Dimensions } from 'react-native';
+import { Form, Content } from 'native-base';
 import { Logo } from '../assets/images';
-import { ActionButton, FormField } from '../components';
+import { ActionButton, FormField, Gap } from '../components';
 const theme = require('../theme');
+
+const { height } = Dimensions.get('window');
 
 const styles = StyleSheet.create({
   container: {
     padding: theme.default.Layout.spacing(4),
     paddingTop: theme.default.Layout.spacing(8),
     display: 'flex',
-    flexDirection: 'column'
+    flexDirection: 'column',
+    height: 'auto'
   },
   logoWrapper: {
     display: 'flex',
-    height: '30%',
-    width: '100%',
-    marginBottom: theme.default.Layout.spacing(4)
+    maxHeight: (20 / 100) * height,
+    width: '100%'
   },
   logo: {
     height: '100%',
@@ -25,10 +27,6 @@ const styles = StyleSheet.create({
   },
   form: {
     width: '100%',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
     overflow: 'hidden'
   }
 });
@@ -36,16 +34,19 @@ const styles = StyleSheet.create({
 // Functional Component
 const Login = () => {
   return (
-    <Container style={styles.container}>
+    <Content style={styles.container}>
       <View style={styles.logoWrapper}>
         <Image source={Logo} style={styles.logo} />
       </View>
+      <Gap scale={4} />
       <Form type="submit" style={styles.form}>
         <FormField label="Username/Email" />
+        <Gap scale={1} />
         <FormField label="Password" secure />
+        <Gap scale={2} />
         <ActionButton label="Login" />
       </Form>
-    </Container>
+    </Content>
   );
 };
 

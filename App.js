@@ -1,6 +1,7 @@
 import React from 'react';
-import {Container, Text} from 'native-base';
-import {Login} from './src/views';
+import { Animated } from 'react-native';
+import { Container, Text } from 'native-base';
+import { Login, Dashboard } from './src/views';
 
 // const App = () => (
 //   <Container>
@@ -8,4 +9,4 @@ import {Login} from './src/views';
 //   </Container>
 // );
 
-export default Login;
+export default Dashboard;

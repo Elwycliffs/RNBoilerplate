@@ -1,19 +1,25 @@
 export default {
   palette: {
     primary: {
-      main: 'green',
-      dark: 'darkgreen',
+      base: 'gray',
+      main: 'lightgray',
+      info: 'green',
+      error: 'red',
+      warning: 'yellow'
     },
     secondary: {
-      main: 'yellow',
-      dark: 'darkyellow',
-    },
+      base: 'gray',
+      main: 'lightgray',
+      info: 'green',
+      error: 'red',
+      warning: 'yellow'
+    }
   },
   Typography: {
-    fontFamily: 'san-serify',
+    fontFamily: 'san-serif'
   },
   Layout: {
     pagePadding: 8,
-    spacing: prop => parseInt(prop) * 8,
-  },
+    spacing: (prop) => parseInt(prop) * 8
+  }
 };

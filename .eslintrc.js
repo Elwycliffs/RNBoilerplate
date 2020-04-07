@@ -3,10 +3,10 @@ module.exports = {
   extends: '@react-native-community',
   parserOptions: {
     ecmaFeatures: {
-      jsx: true,
+      jsx: true
     },
     ecmaVersion: 2018,
-    sourceType: 'module',
+    sourceType: 'module'
   },
   rules: {
     'react/prop-types': 0,
@@ -18,13 +18,14 @@ module.exports = {
         ObjectExpression: 'always',
         ObjectPattern: { multiline: true },
         ImportDeclaration: 'never',
-        ExportDeclaration: { multiline: true, minProperties: 3 },
-      },
+        ExportDeclaration: { multiline: true, minProperties: 3 }
+      }
     ],
+    'react-native/no-inline-styles': 0,
     'object-curly-newline': 0,
     'react/jsx-props-no-spreading': 0,
     'arrow-parens': 0,
     'import/prefer-default-export': 0,
-    'prettier/prettier': 0,
-  },
+    'prettier/prettier': 0
+  }
 };
