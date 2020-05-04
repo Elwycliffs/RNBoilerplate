@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { StyleSheet, Image, View, Dimensions } from 'react-native';
-import { Form, Content } from 'native-base';
+import { Form, Content, Spinner } from 'native-base';
 import { Logo } from '../assets/images';
 import { ActionButton, FormField, Gap } from '../components';
+import LoginUtil from '../utils/net/login';
 const theme = require('../theme');
 
 const { height } = Dimensions.get('window');
@@ -35,6 +36,25 @@ const styles = StyleSheet.create({
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [working, setWorking] = useState(false);
+
+  const login = () => {
+    // Run Network Login Function here
+    setWorking(true);
+    LoginUtil({
+      username: String(username).trim(),
+      password: password
+    })
+      .then(result => {
+        console.log('Network Result', result);
+        setWorking(false);
+      })
+      .catch(error => {
+        console.log('Network Error', error);
+        setWorking(false);
+      });
+  };
+
   return (
     <Content style={styles.container}>
       <View style={styles.logoWrapper}>
@@ -53,13 +73,11 @@ const Login = () => {
           onChange={text => setPassword(text)}
         />
         <Gap scale={2} />
-        <ActionButton
-          label="Login"
-          onClick={() => {
-            console.log('Username: ', username);
-            console.log('Password: ', password);
-          }}
-        />
+        {working ? (
+          <Spinner color="green" />
+        ) : (
+          <ActionButton label="Login" onClick={login} />
+        )}
       </Form>
     </Content>
   );
