@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
   }
 });
 
-const Field = (props) => {
+const Field = props => {
   YellowBox.ignoreWarnings(['Animated: `useNativeDriver`']);
   return (
     <Item
@@ -31,6 +31,7 @@ const Field = (props) => {
         secureTextEntry={props.secure ? true : false}
         style={styles.fieldInput}
         placeholder={props.placeholder ? props.placeholder : ''}
+        onChangeText={text => props.onChange(text)}
       />
     </Item>
   );

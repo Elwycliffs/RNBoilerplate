@@ -14,13 +14,14 @@ const styles = StyleSheet.create({
   }
 });
 
-const ActionButton = (props) => (
+const ActionButton = props => (
   <View style={styles.wrapper}>
     <Button
       style={{
         ...styles.actionButton,
         justifyContent: props.center ? 'center' : 'flex-start'
       }}
+      onPress={props.onClick}
     >
       <Text>{props.label}</Text>
     </Button>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Image, View, Dimensions } from 'react-native';
 import { Form, Content } from 'native-base';
 import { Logo } from '../assets/images';
@@ -33,6 +33,8 @@ const styles = StyleSheet.create({
 
 // Functional Component
 const Login = () => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
   return (
     <Content style={styles.container}>
       <View style={styles.logoWrapper}>
@@ -40,11 +42,24 @@ const Login = () => {
       </View>
       <Gap scale={4} />
       <Form type="submit" style={styles.form}>
-        <FormField label="Username/Email" />
+        <FormField
+          onChange={text => setUsername(text)}
+          label="Username/Email"
+        />
         <Gap scale={1} />
-        <FormField label="Password" secure />
+        <FormField
+          label="Password"
+          secure
+          onChange={text => setPassword(text)}
+        />
         <Gap scale={2} />
-        <ActionButton label="Login" />
+        <ActionButton
+          label="Login"
+          onClick={() => {
+            console.log('Username: ', username);
+            console.log('Password: ', password);
+          }}
+        />
       </Form>
     </Content>
   );
